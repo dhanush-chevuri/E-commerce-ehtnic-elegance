@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethnic Wear E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>EthnicWear</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for products...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#sustainability">Sustainability</a></li>
+                <li><a href="#fabrics">Fabrics</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="wishlist-icon">
+                    <i class="fas fa-heart"></i>
+                </a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="auth-buttons">
+                    <a href="auth.html" class="login-btn" id="loginBtn">
+                        <i class="fas fa-user"></i>
+                        <span id="userName">Login</span>
+                    </a>
+                    <button class="logout-btn" id="logoutBtn" style="display: none;">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Elegant Ethnic Wear</h1>
+            <p>Explore our collection of traditional and contemporary ethnic wear</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <section id="categories" class="categories">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.pexels.com/photos/17040875/pexels-photo-17040875/free-photo-of-photo-of-a-woman-wearing-red-sari-standing-on-a-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarees">
+                <h3>Sarees</h3>
+                <p>Traditional and modern sarees</p>
+            </div>
+            <div class="category-card">
+                <img src="https://images.pexels.com/photos/29351978/pexels-photo-29351978/free-photo-of-elegant-south-asian-bridal-portrait-with-jewelry.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Lehengas">
+                <h3>Lehengas</h3>
+                <p>Bridal and party wear</p>
+            </div>
+            <div class="category-card">
+                <img src="https://images.pexels.com/photos/28512776/pexels-photo-28512776/free-photo-of-elegant-chikankari-kurti-fashion-in-lucknow.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Kurtis">
+                <h3>Kurtis</h3>
+                <p>Casual and formal wear</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <div class="product-filters">
+                <div class="category-filter">
+                    <select id="categorySelect" onchange="filterProducts()">
+                        <option value="all">All Categories</option>
+                        <option value="Sarees">Sarees</option>
+                        <option value="Lehengas">Lehengas</option>
+                        <option value="Anarkalis">Anarkalis</option>
+                        <option value="Suits">Suits</option>
+                        <option value="Kurtis">Kurtis</option>
+                    </select>
+                </div>
+                <div class="sort-filter">
+                    <select id="sortSelect" onchange="sortProducts()">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="productGrid" class="product-grid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <section class="sustainability">
+        <h2>Our Commitment to Sustainability</h2>
+        <div class="sustainability-content">
+            <div class="sustainability-grid">
+                <div class="sustainability-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Eco-Friendly Materials</h3>
+                    <p>We use sustainable fabrics like organic cotton, recycled materials, and natural dyes to minimize environmental impact.</p>
+                </div>
+                <div class="sustainability-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Fair Trade Practices</h3>
+                    <p>Our artisans receive fair wages and work in safe conditions, supporting local communities and traditional craftsmanship.</p>
+                </div>
+                <div class="sustainability-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Waste Reduction</h3>
+                    <p>We implement zero-waste patterns and recycling programs to minimize textile waste in our production process.</p>
+                </div>
+                <div class="sustainability-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Sustainable Packaging</h3>
+                    <p>Our packaging is made from recycled materials and is fully biodegradable, reducing plastic waste.</p>
+                </div>
+            </div>
+            <div class="sustainability-stats">
+                <div class="stat-item">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">Organic Materials</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Fair Trade Certified</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">Waste Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Artisans Supported</span>
+                </div>
+            </div>
+            <div class="sustainability-commitment">
+                <h3>Our Environmental Impact</h3>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <img src="https://th.bing.com/th/id/OIP.7lc4jr1-k3-iJ0GH60tC_QHaFj?rs=1&pid=ImgDetMain" alt="Sustainable Production">
+                        <div class="impact-content">
+                            <h4>Sustainable Production</h4>
+                            <p>Our manufacturing processes use renewable energy and water-efficient techniques to reduce our carbon footprint.</p>
+                        </div>
+                    </div>
+                    <div class="impact-item">
+                        <img src="https://imgstaticcontent.lbb.in/lbbnew/wp-content/uploads/2017/10/25131609/251017_ClothesBoxFoundation_04.jpg" alt="Community Support">
+                        <div class="impact-content">
+                            <h4>Community Support</h4>
+                            <p>We partner with local communities to preserve traditional crafts and provide sustainable livelihoods.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fabrics">
+        <h2>Our Premium Fabrics</h2>
+        <div class="fabric-grid">
+            <div class="fabric-card">
+                <img src="https://images.pexels.com/photos/17040875/pexels-photo-17040875/free-photo-of-photo-of-a-woman-wearing-red-sari-standing-on-a-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Silk">
+                <h3>Silk</h3>
+                <p>Luxurious and elegant</p>
+            </div>
+            <div class="fabric-card">
+                <img src="https://images.pexels.com/photos/29351978/pexels-photo-29351978/free-photo-of-elegant-south-asian-bridal-portrait-with-jewelry.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Cotton">
+                <h3>Cotton</h3>
+                <p>Comfortable and breathable</p>
+            </div>
+            <div class="fabric-card">
+                <img src="https://images.pexels.com/photos/28512776/pexels-photo-28512776/free-photo-of-elegant-chikankari-kurti-fashion-in-lucknow.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Chiffon">
+                <h3>Chiffon</h3>
+                <p>Light and flowy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Handcrafted Collection Section -->
+    <section class="handcrafted">
+        <h2>Our Handcrafted Collection</h2>
+        <div class="handcrafted-content">
+            <div class="handcrafted-grid">
+                <div class="handcrafted-card">
+                    <img src="https://thumbs.dreamstime.com/z/hand-embroidered-painting-factory-vietnam-unidentified-woman-working-embroided-near-halong-artworks-usually-represent-90824454.jpg">
+                    <div class="handcrafted-info">
+                        <h3>Hand-Embroidered Sarees</h3>
+                        <p>Each piece is meticulously hand-embroidered by skilled artisans, featuring intricate patterns and traditional motifs.</p>
+                        <ul class="handcrafted-features">
+                            <li><i class="fas fa-check"></i> Hand-stitched embellishments</li>
+                            <li><i class="fas fa-check"></i> Traditional embroidery techniques</li>
+                            <li><i class="fas fa-check"></i> Unique designs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="handcrafted-card">
+                    <img src="https://i.pinimg.com/originals/60/ce/6c/60ce6c3181a2f4aceb943b96feeae4cf.png" alt="Handwoven Fabrics">
+                    <div class="handcrafted-info">
+                        <h3>Handwoven Fabrics</h3>
+                        <p>Our handwoven collection showcases the artistry of traditional weavers, creating unique textures and patterns.</p>
+                        <ul class="handcrafted-features">
+                            <li><i class="fas fa-check"></i> Traditional handloom weaving</li>
+                            <li><i class="fas fa-check"></i> Natural dyeing processes</li>
+                            <li><i class="fas fa-check"></i> Sustainable materials</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="handcrafted-card">
+                    <img src="https://thumbs.dreamstime.com/z/woman-hand-painting-cloth-batik-factory-penang-malaysia-march-paints-stencil-penang-malaysia-editorial-use-93300390.jpg?w=360" alt="Hand-Painted Designs">
+                    <div class="handcrafted-info">
+                        <h3>Hand-Painted Designs</h3>
+                        <p>Each piece features unique hand-painted artwork, bringing traditional designs to life with contemporary flair.</p>
+                        <ul class="handcrafted-features">
+                            <li><i class="fas fa-check"></i> Custom artwork</li>
+                            <li><i class="fas fa-check"></i> Natural pigments</li>
+                            <li><i class="fas fa-check"></i> One-of-a-kind pieces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="handcrafted-story">
+                <h3>The Art of Handcrafting</h3>
+                <p>Our handcrafted collection represents the perfect blend of traditional craftsmanship and modern aesthetics. Each piece is created with meticulous attention to detail by skilled artisans who have mastered their craft over generations. We believe in preserving these traditional techniques while adapting them to contemporary fashion needs.</p>
+                <div class="artisan-stats">
+                    <div class="artisan-stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Skilled Artisans</span>
+                    </div>
+                    <div class="artisan-stat">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Handcrafted Pieces</span>
+                    </div>
+                    <div class="artisan-stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Traditional Techniques</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>EthnicWear brings you the finest collection of traditional and contemporary ethnic wear.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@ethnicwear.com</p>
+                <p>Phone: +91 1234567890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EthnicWear. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">₹0</span>
+                </div>
+                <div class="cart-total">
+                    <span>Tax (18%):</span>
+                    <span id="cartTax">₹0</span>
+                </div>
+                <div class="grand-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₹0</span>
+                </div>
+                <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Checkout</h2>
+            <div class="checkout-steps">
+                <div class="step active" id="step1">
+                    <h3>Buyer Details</h3>
+                    <form id="buyerDetailsForm" class="checkout-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Delivery Address</label>
+                            <textarea id="address" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">PIN Code</label>
+                            <input type="text" id="pincode" required>
+                        </div>
+                        <button type="submit" class="checkout-button">Continue to Payment</button>
+                    </form>
+                </div>
+                <div class="step" id="step2">
+                    <h3>Payment Details</h3>
+                    <form id="paymentForm" class="checkout-form">
+                        <div class="form-group">
+                            <label for="cardName">Card Holder Name</label>
+                            <input type="text" id="cardName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <h4>Order Summary</h4>
+                            <div class="summary-item">
+                                <span>Subtotal:</span>
+                                <span id="checkoutSubtotal">₹0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Tax (18%):</span>
+                                <span id="checkoutTax">₹0</span>
+                            </div>
+                            <div class="summary-item total">
+                                <span>Total:</span>
+                                <span id="checkoutTotal">₹0</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="checkout-button">Place Order</button>
+                    </form>
+                </div>
+                <div class="step" id="step3">
+                    <div class="order-success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Order Placed Successfully!</h3>
+                        <p>Thank you for your purchase. Your order has been confirmed.</p>
+                        <p>Order ID: <span id="orderId"></span></p>
+                        <button class="checkout-button" onclick="closeCheckoutModal()">Continue Shopping</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-product">&times;</span>
+            <div class="product-details-container">
+                <div class="product-details-image">
+                    <img src="" alt="" id="productDetailsImage">
+                </div>
+                <div class="product-details-info">
+                    <h2 id="productDetailsName"></h2>
+                    <div class="product-details-rating" id="productDetailsRating"></div>
+                    <p class="product-details-description" id="productDetailsDescription"></p>
+                    <div class="product-details-price" id="productDetailsPrice"></div>
+                    <div class="product-details-colors" id="productDetailsColors"></div>
+                    <div class="product-details-sizes" id="productDetailsSizes"></div>
+                    <div class="product-details-stock" id="productDetailsStock"></div>
+                    <div class="product-details-actions">
+                        <button class="add-to-cart" id="productDetailsAddToCart">Add to Cart</button>
+                        <button class="wishlist-btn" id="productDetailsWishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCRrO1h_e0AJ9ZImXO_4OXUbuPHhPwr3Ek",
+            authDomain: "ecommerce-54de8.firebaseapp.com",
+            projectId: "ecommerce-54de8",
+            storageBucket: "ecommerce-54de8.firebasestorage.app",
+            messagingSenderId: "352177175974",
+            appId: "1:352177175974:web:5d77e50f33bcf631302367",
+            measurementId: "G-N5YRKC7MFN"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Check authentication state
+        auth.onAuthStateChanged((user) => {
+            const loginBtn = document.getElementById('loginBtn');
+            const userName = document.getElementById('userName');
+            
+            if (user) {
+                // User is signed in
+                const displayName = user.displayName || user.email.split('@')[0];
+                userName.textContent = displayName;
+                loginBtn.href = '#'; // Prevent navigation to auth page
+                loginBtn.classList.add('logged-in');
+                document.getElementById('logoutBtn').style.display = 'inline';
+            } else {
+                // User is signed out
+                userName.textContent = 'Login';
+                loginBtn.href = 'auth.html';
+                loginBtn.classList.remove('logged-in');
+                document.getElementById('logoutBtn').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 
