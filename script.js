@@ -12,6 +12,7 @@ const products = [
         stock: 15,
         colors: ["White", "Ivory", "Beige", "Light Pink", "Light Blue"],
         sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
         isCustomizable: true,
         designs: [
             {
@@ -50,6 +51,7 @@ const products = [
         stock: 20,
         colors: ["White", "Off White", "Light Yellow", "Light Green"],
         sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
         isCustomizable: true,
         designs: [
             {
@@ -77,6 +79,84 @@ const products = [
         ]
     },
     {
+        id: 9,
+        name: "Plain Cotton Saree - White",
+        description: "Comfortable cotton saree with design customization",
+        price: 1499,
+        originalPrice: 2999,
+        image: "WhatsApp Image 2025-04-02 at 18.14.45_2e81f89a.jpg",
+        category: "Sarees",
+        rating: 4.5,
+        stock: 20,
+        colors: ["White", "Off White", "Light Yellow", "Light Green"],
+        sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
+        isCustomizable: true,
+        designs: [
+            {
+                id: "d4",
+                name: "Floral Border",
+                image: "https://t4.ftcdn.net/jpg/00/40/98/47/360_F_40984798_DXM81PAeJJlhywRo4qCpqe1yMJRXxlD1.jpg",
+                price: 500
+            },
+            {
+                id: "d5",
+                name: "Traditional Motif",
+                image: "floral.jpg",
+                price: 800
+            },
+            {
+                id: "d6",
+                name: "Modern Pattern",
+                image: "design 1.jpg",
+                price: 600
+            }
+        ],
+        reviews: [
+            { user: "Anjali", rating: 4, comment: "Perfect for daily wear with nice design options" },
+            { user: "Meera", rating: 5, comment: "Great quality cotton, designs are elegant" }
+        ]
+    },
+    {
+        id: 10,
+        name: "Plain Cotton Saree - green",
+        description: "Comfortable cotton saree with design customization",
+        price: 1499,
+        originalPrice: 2999,
+        image: "saree.jpg",
+        category: "Sarees",
+        rating: 4.5,
+        stock: 20,
+        colors: ["White", "Off White", "Light Yellow", "Light Green"],
+        sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
+        isCustomizable: true,
+        designs: [
+            {
+                id: "d4",
+                name: "Floral Border",
+                image: "https://t4.ftcdn.net/jpg/00/40/98/47/360_F_40984798_DXM81PAeJJlhywRo4qCpqe1yMJRXxlD1.jpg",
+                price: 500
+            },
+            {
+                id: "d5",
+                name: "Traditional Motif",
+                image: "floral.jpg",
+                price: 800
+            },
+            {
+                id: "d6",
+                name: "Modern Pattern",
+                image: "design 1.jpg",
+                price: 600
+            }
+        ],
+        reviews: [
+            { user: "Anjali", rating: 4, comment: "Perfect for daily wear with nice design options" },
+            { user: "Meera", rating: 5, comment: "Great quality cotton, designs are elegant" }
+        ]
+    },
+    {
         id: 1,
         name: "Elegant Red Saree",
         description: "Handcrafted silk saree with intricate embroidery",
@@ -88,6 +168,7 @@ const products = [
         stock: 10,
         colors: ["Red", "Maroon", "Crimson"],
         sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
         reviews: [
             { user: "Priya", rating: 5, comment: "Beautiful saree, excellent quality!" },
             { user: "Rahul", rating: 4, comment: "Good product, fast delivery" }
@@ -105,6 +186,7 @@ const products = [
         stock: 8,
         colors: ["Blue", "Navy", "Royal Blue"],
         sizes: ["XS", "S", "M", "L", "XL"],
+        sizeChartImage: "size chart.jpg",
         reviews: [
             { user: "Anjali", rating: 5, comment: "Stunning lehenga, perfect for weddings!" },
             { user: "Meera", rating: 4, comment: "Beautiful design, good quality" }
@@ -122,6 +204,7 @@ const products = [
         stock: 15,
         colors: ["Green", "Emerald", "Forest Green"],
         sizes: ["S", "M", "L", "XL"],
+        sizeChartImage: "size chart.jpg",
         reviews: [
             { user: "Neha", rating: 4, comment: "Comfortable and elegant" },
             { user: "Ravi", rating: 5, comment: "Great quality, beautiful design" }
@@ -139,6 +222,7 @@ const products = [
         stock: 12,
         colors: ["Pink", "Rose", "Light Pink"],
         sizes: ["S", "M", "L"],
+        sizeChartImage: "size chart.jpg",
         reviews: [
             { user: "Sneha", rating: 5, comment: "Perfect for office wear" },
             { user: "Amit", rating: 4, comment: "Good quality, nice fit" }
@@ -156,6 +240,7 @@ const products = [
         stock: 5,
         colors: ["Gold", "Golden", "Yellow"],
         sizes: ["S", "M", "L"],
+        sizeChartImage: "size chart.jpg",
         reviews: [
             { user: "Pooja", rating: 5, comment: "Perfect for my wedding!" },
             { user: "Rahul", rating: 5, comment: "Exquisite work, worth every penny" }
@@ -173,6 +258,7 @@ const products = [
         stock: 20,
         colors: ["White", "Ivory", "Beige"],
         sizes: ["S", "M", "L", "XL"],
+        sizeChartImage: "size chart.jpg",
         reviews: [
             { user: "Priya", rating: 4, comment: "Beautiful embroidery" },
             { user: "Anjali", rating: 5, comment: "Perfect for casual wear" }
@@ -277,20 +363,116 @@ function showProductDetails(productId) {
         <h3>Available Colors</h3>
         <div class="color-options">
             ${product.colors.map(color => `
-                <div class="color-option" style="background-color: ${color.toLowerCase()}"></div>
+                <div class="color-option" style="background-color: ${color.toLowerCase()}" data-color="${color}"></div>
             `).join('')}
         </div>
     `;
 
-    // Sizes
+    // Add click event for color selection
+    setTimeout(() => {
+        document.querySelectorAll('.color-option').forEach(colorOption => {
+            colorOption.addEventListener('click', function() {
+                // Remove selected class from all color options
+                document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked color option
+                this.classList.add('selected');
+                // Store selected color
+                product.selectedColor = this.getAttribute('data-color');
+            });
+        });
+    }, 100);
+
+    // Sizes with Size Chart Button
     document.getElementById('productDetailsSizes').innerHTML = `
-        <h3>Available Sizes</h3>
+        <h3>Available Sizes <button class="view-size-chart" onclick="showSizeChart('${product.sizeChartImage}')">View Size Chart</button></h3>
         <div class="size-options">
             ${product.sizes.map(size => `
-                <button class="size-option">${size}</button>
+                <button class="size-option" data-size="${size}">${size}</button>
             `).join('')}
+            <button class="size-option custom-size-btn" data-size="custom">Custom Size</button>
+        </div>
+        <div class="custom-size-form" style="display: none;">
+            <h4>Enter Custom Measurements (in inches)</h4>
+            <div class="custom-size-inputs">
+                ${product.category === 'Sarees' ? `
+                    <div class="input-group">
+                        <label for="blouseSize">Blouse Size:</label>
+                        <input type="number" id="blouseSize" name="blouseSize" min="30" max="48" placeholder="32">
+                    </div>
+                    <div class="input-group">
+                        <label for="sareeLength">Saree Length:</label>
+                        <input type="number" id="sareeLength" name="sareeLength" min="5" max="9" placeholder="6 yards">
+                    </div>
+                ` : product.category === 'Lehengas' ? `
+                    <div class="input-group">
+                        <label for="waist">Waist:</label>
+                        <input type="number" id="waist" name="waist" min="24" max="44" placeholder="28">
+                    </div>
+                    <div class="input-group">
+                        <label for="bust">Bust:</label>
+                        <input type="number" id="bust" name="bust" min="30" max="48" placeholder="34">
+                    </div>
+                    <div class="input-group">
+                        <label for="hip">Hip:</label>
+                        <input type="number" id="hip" name="hip" min="30" max="50" placeholder="36">
+                    </div>
+                    <div class="input-group">
+                        <label for="length">Length:</label>
+                        <input type="number" id="length" name="length" min="38" max="44" placeholder="40">
+                    </div>
+                ` : `
+                    <div class="input-group">
+                        <label for="bust">Bust:</label>
+                        <input type="number" id="bust" name="bust" min="30" max="48" placeholder="34">
+                    </div>
+                    <div class="input-group">
+                        <label for="waist">Waist:</label>
+                        <input type="number" id="waist" name="waist" min="24" max="44" placeholder="28">
+                    </div>
+                    <div class="input-group">
+                        <label for="hip">Hip:</label>
+                        <input type="number" id="hip" name="hip" min="30" max="50" placeholder="36">
+                    </div>
+                    <div class="input-group">
+                        <label for="shoulder">Shoulder:</label>
+                        <input type="number" id="shoulder" name="shoulder" min="14" max="18" placeholder="15">
+                    </div>
+                    <div class="input-group">
+                        <label for="length">Length:</label>
+                        <input type="number" id="length" name="length" min="34" max="42" placeholder="38">
+                    </div>
+                `}
+                <div class="custom-size-note">
+                    <p>* Custom sizes may take 3-5 additional days for production.</p>
+                </div>
+            </div>
         </div>
     `;
+
+    // Add click event listeners for size selection
+    setTimeout(() => {
+        document.querySelectorAll('.size-option').forEach(sizeOption => {
+            sizeOption.addEventListener('click', function() {
+                // Remove selected class from all size options
+                document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked size option
+                this.classList.add('selected');
+                
+                const selectedSize = this.getAttribute('data-size');
+                product.selectedSize = selectedSize;
+                
+                // Toggle custom size form
+                const customSizeForm = document.querySelector('.custom-size-form');
+                if (selectedSize === 'custom') {
+                    customSizeForm.style.display = 'block';
+                    product.isCustomSize = true;
+                } else {
+                    customSizeForm.style.display = 'none';
+                    product.isCustomSize = false;
+                }
+            });
+        });
+    }, 100);
 
     // Stock status
     document.getElementById('productDetailsStock').innerHTML = `
@@ -388,6 +570,47 @@ function showProductDetails(productId) {
     modalContent.style.overflowY = 'auto';
 }
 
+// Show Size Chart Modal
+function showSizeChart(chartImageUrl) {
+    // Create modal if it doesn't exist
+    let sizeChartModal = document.getElementById('sizeChartModal');
+    
+    if (!sizeChartModal) {
+        sizeChartModal = document.createElement('div');
+        sizeChartModal.id = 'sizeChartModal';
+        sizeChartModal.className = 'modal';
+        sizeChartModal.innerHTML = `
+            <div class="modal-content size-chart-modal">
+                <span class="close">&times;</span>
+                <h2>Size Chart</h2>
+                <div class="size-chart-container">
+                    <img id="sizeChartImage" src="" alt="Size Chart" class="size-chart-image">
+                </div>
+            </div>
+        `;
+        document.body.appendChild(sizeChartModal);
+        
+        // Add close functionality
+        const closeBtn = sizeChartModal.querySelector('.close');
+        closeBtn.onclick = function() {
+            sizeChartModal.style.display = 'none';
+        };
+        
+        // Close on outside click
+        window.onclick = function(event) {
+            if (event.target === sizeChartModal) {
+                sizeChartModal.style.display = 'none';
+            }
+        };
+    }
+    
+    // Set the image source
+    document.getElementById('sizeChartImage').src = chartImageUrl;
+    
+    // Display the modal
+    sizeChartModal.style.display = 'block';
+}
+
 // Function to select and preview design
 function selectDesign(productId, designId) {
     const product = products.find(p => p.id === parseInt(productId));
@@ -434,13 +657,18 @@ function closeProductDetails(modal) {
     modal.style.opacity = '0';
     setTimeout(() => {
         modal.style.display = 'none';
-        // Remove reviews container
+        // Remove design customization and reviews container
+        const designCustomization = modal.querySelector('.design-customization');
+        if (designCustomization) {
+            designCustomization.remove();
+        }
         const reviewsContainer = modal.querySelector('.product-reviews-container');
         if (reviewsContainer) {
             reviewsContainer.remove();
         }
     }, 300);
 }
+
 
 // Generate star rating HTML
 function generateStars(rating) {
