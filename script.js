@@ -157,6 +157,60 @@ const products = [
         ]
     },
     {
+        id: 13,
+        name: "Dark Green Embroidery Blouse",
+        description: "Handcrafted cotton Blouse with embroidery",
+        price: 699,
+        originalPrice: 2599,
+        image: "Dark Green Embroidery Blouse.jpg",
+        category: "Sarees",
+        rating: 4.5,
+        stock: 10,
+        colors: ["Red", "Maroon", "Crimson"],
+        sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
+        reviews: [
+            { user: "Priya", rating: 5, comment: "Beautiful Blouse, excellent quality!" },
+            { user: "Rahul", rating: 4, comment: "Good product, fast delivery" }
+        ]
+    },
+    {
+        id: 12,
+        name: "Green Plain Blouse",
+        description: "Handcrafted cotton Blouse",
+        price: 399,
+        originalPrice: 1599,
+        image: "green blouse.jpg",
+        category: "Sarees",
+        rating: 4.5,
+        stock: 10,
+        colors: ["Red", "Maroon", "Crimson"],
+        sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
+        reviews: [
+            { user: "Priya", rating: 5, comment: "Beautiful Blouse, excellent quality!" },
+            { user: "Rahul", rating: 4, comment: "Good product, fast delivery" }
+        ]
+    },
+    {
+        id: 11,
+        name: "Blue Embroidery Blouse",
+        description: "Handcrafted silk Blouse with intricate embroidery",
+        price: 499,
+        originalPrice: 2999,
+        image: "Blouse-1.jpg",
+        category: "Sarees",
+        rating: 4.5,
+        stock: 10,
+        colors: ["Red", "Maroon", "Crimson"],
+        sizes: ["Free Size"],
+        sizeChartImage: "size chart.jpg",
+        reviews: [
+            { user: "Priya", rating: 5, comment: "Beautiful Blouse, excellent quality!" },
+            { user: "Rahul", rating: 4, comment: "Good product, fast delivery" }
+        ]
+    },
+    {
         id: 1,
         name: "Elegant Red Saree",
         description: "Handcrafted silk saree with intricate embroidery",
